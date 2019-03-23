@@ -2,6 +2,7 @@ package servlet;
 
 import com.sun.net.httpserver.HttpServer;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,13 +19,23 @@ public class MyServlet extends HttpServlet {
     double value2;
     double result;
 
+    @Inject
+    User user;
+
+    @Inject
+    StrongPasswordGenerator strongPasswordGenerator;
+
+    @Inject
+    WeekPasswordGenerator weekPasswordGenerator;
+
+
+
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         value1 = Double.valueOf(request.getParameter("value1"));
         operator = request.getParameter("operator");
-//        value2 = Double.valueOf(request.getParameter("value2"));
-//        calculate(operator,value1,value2);
+
         changeDegree(operator,value1);
         request.setAttribute("result",new Double(result));
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("page.jsp");
@@ -34,6 +45,8 @@ public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+
+
 
     protected void calculate(String operator, double value1, double value2){
         if(operator.equals("+")) result = value1+value2;

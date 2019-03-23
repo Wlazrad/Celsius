@@ -11,16 +11,24 @@
     <title>Title</title>
 </head>
 <body>
-<h1>lalalalla</h1>
+<h1>New user</h1>
+
+<h2>Please fill in the form to register a new user.</h2>
 
 <form action="MyServlet">
-    <input type="number" min="0" max="99999" step="1" value="10"
+    Email<input
     name="value1" required>
-    <select name="operator">
-        <option value="+">Celsius</option>
-        <option value="-">Fahrenheit</option>
-    </select>
-    <input type="submit" value="oblicz">
+
+
+        <input type="radio" name="gender" value="male" checked> User<br>
+        <input type="radio" name="gender" value="female"> Superuser<br>
+
+    <input type="checkbox" >TCstudio<br>
+    <input type="checkbox" >TCserver<br>
+    <input type="checkbox" >TCSite<br>
+
+
+    <input type="submit" value="Register">
 </form>
 </body>
 </html>
